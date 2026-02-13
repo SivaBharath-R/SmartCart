@@ -1,0 +1,87 @@
+{% extends 'admin/base.html' %}
+{% block title %}Admin Profile{% endblock %}
+
+{% block content %}
+
+<div class="row justify-content-center">
+    <div class="col-lg-8 col-md-10">
+
+        <div class="card shadow-sm">
+            <div class="card-body">
+
+                <h3 class="mb-4 text-center">Admin Profile Settings</h3>
+
+                <!-- Flash Messages handled by base.html -->
+
+                <div class="row">
+
+                    <!-- Profile Image Section -->
+                    <div class="col-md-4 text-center mb-4">
+
+                        {% if admin.profile_image %}
+                            <img src="{{ url_for('static', filename='uploads/admin_profiles/' + admin.profile_image) }}"
+                                 class="img-fluid rounded-circle border mb-3"
+                                 style="width:150px; height:150px; object-fit:cover;">
+                        {% else %}
+                            <img src="https://cdn-icons-png.flaticon.com/512/149/149071.png"
+                                 class="img-fluid rounded-circle border mb-3"
+                                 style="width:150px; height:150px; object-fit:cover;">
+                        {% endif %}
+
+                        <p class="text-muted">Profile Picture</p>
+
+                    </div>
+
+                    <!-- Profile Form -->
+                    <div class="col-md-8">
+
+                        <form method="POST" action="/admin/profile" enctype="multipart/form-data">
+
+                            <!-- Name -->
+                            <div class="mb-3">
+                                <label class="form-label">Full Name</label>
+                                <input type="text" name="name" class="form-control"
+                                       value="{{ admin.name }}" required>
+                            </div>
+
+                            <!-- Email -->
+                            <div class="mb-3">
+                                <label class="form-label">Email Address</label>
+                                <input type="email" name="email" class="form-control"
+                                       value="{{ admin.email }}" required>
+                            </div>
+
+                            <!-- Password -->
+                            <div class="mb-3">
+                                <label class="form-label">New Password</label>
+                                <input type="password" name="password" class="form-control">
+                                <small class="text-muted">
+                                    Leave blank if you don't want to change password
+                                </small>
+                            </div>
+
+                            <!-- Upload Image -->
+                            <div class="mb-4">
+                                <label class="form-label">Upload New Profile Image</label>
+                                <input type="file" name="profile_image" accept="image/*" class="form-control">
+                            </div>
+
+                            <!-- Buttons -->
+                            <div class="d-flex justify-content-between">
+                                <a href="/admin/dashboard" class="btn btn-outline-secondary">Back</a>
+                                <button type="submit" class="btn btn-primary">Update Profile</button>
+                            </div>
+
+                        </form>
+
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+</div>
+
+{% endblock %}

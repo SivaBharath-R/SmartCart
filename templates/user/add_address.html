@@ -1,0 +1,27 @@
+{% extends 'user/base.html' %}
+{% block content %}
+
+<div class="container mt-5">
+
+    <div class="card p-4 shadow-sm mx-auto" style="max-width:500px">
+
+        <h4 class="mb-4 text-center">Add Delivery Address</h4>
+
+        <form method="POST">
+
+            <input class="form-control mb-3" name="full_name" placeholder="Full Name" required>
+            <input class="form-control mb-3" name="phone" placeholder="Phone Number" required>
+            <input class="form-control mb-3" name="house" placeholder="House / Flat No" required>
+            <input class="form-control mb-3" name="area" placeholder="Street / Area" required>
+            <input class="form-control mb-3" name="city" placeholder="City" required>
+            <input class="form-control mb-3" name="state" placeholder="State" required>
+            <input class="form-control mb-3" name="pincode" placeholder="Pincode" required>
+
+            <button class="btn btn-success w-100">Save Address</button>
+
+        </form>
+
+    </div>
+</div>
+
+{% endblock %}

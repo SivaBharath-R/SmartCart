@@ -1,0 +1,145 @@
+{% extends 'admin/base.html' %}
+{% block title %}Products Inventory{% endblock %}
+
+{% block content %}
+
+<div class="d-flex justify-content-between align-items-center mb-4 flex-wrap gap-2">
+    <h2 class="mb-0">Product Inventory</h2>
+
+    <a href="/admin/add-item" class="btn btn-primary">
+        <i class="bi bi-plus-circle"></i> Add Product
+    </a>
+</div>
+
+<!-- SEARCH + FILTER BAR -->
+<div class="card mb-4 shadow-sm">
+    <div class="card-body">
+
+        <form method="GET" action="/admin/item-list" class="row g-3 align-items-end">
+
+            <!-- Search -->
+            <div class="col-md-5">
+                <label class="form-label">Search Product</label>
+                <input type="text" name="search" class="form-control" placeholder="Enter product name..."
+                    value="{{ request.args.get('search', '') }}">
+            </div>
+
+            <!-- Category Filter -->
+            <div class="col-md-4">
+                <label class="form-label">Category</label>
+                <select name="category" class="form-select">
+                    <option value="">All Categories</option>
+
+                    {% for cat in categories %}
+                    <option value="{{ cat.category }}" {% if request.args.get('category')==cat.category %} selected {%
+                        endif %}>
+                        {{ cat.category }}
+                    </option>
+                    {% endfor %}
+                </select>
+            </div>
+
+            <!-- Buttons -->
+            <div class="col-md-3 d-grid">
+                <button type="submit" class="btn btn-dark">
+                    <i class="bi bi-search"></i> Apply Filter
+                </button>
+            </div>
+
+        </form>
+
+    </div>
+</div>
+
+<!-- PRODUCTS TABLE -->
+<div class="card shadow-sm">
+    <div class="card-body">
+
+        <div class="table-responsive">
+
+            <table class="table table-hover align-middle">
+
+                <thead class="table-dark">
+                    <tr>
+                        <th>ID</th>
+                        <th>Image</th>
+                        <th>Name</th>
+                        <th>Category</th>
+                        <th>Price</th>
+                        <th class="text-center">Actions</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+
+                    {% for product in products %}
+                    <tr>
+
+                        <td>{{ product.product_id }}</td>
+
+                        <!-- Image -->
+                        <td>
+                            <img src="{{ url_for('static', filename='uploads/product_images/' + product.image) }}"
+                                class="product-img">
+                        </td>
+
+                        <!-- Name -->
+                        <td>
+                            <strong>{{ product.name }}</strong>
+                        </td>
+
+                        <!-- Category -->
+                        <td>
+                            <span class="badge bg-secondary">
+                                {{ product.category }}
+                            </span>
+                        </td>
+
+                        <!-- Price -->
+                        <td class="fw-bold text-primary">
+                            ₹ {{ product.price }}
+                        </td>
+
+                        <!-- Actions -->
+                        <td class="text-center">
+
+                            <a href="/admin/view-item/{{ product.product_id }}" class="btn btn-sm btn-info text-white">
+                                View
+                            </a>
+
+                            <a href="/admin/update-item/{{ product.product_id }}" class="btn btn-sm btn-warning">
+                                Edit
+                            </a>
+
+                            <!-- Delete (POST request) -->
+                            <form action="/admin/delete-item/{{ product.product_id }}" method="POST"
+                                style="display:inline;" onsubmit="return confirm('Delete this product?');">
+
+                                <button type="submit" class="btn btn-sm btn-danger">
+                                    Delete
+                                </button>
+
+                            </form>
+                        </td>
+
+                    </tr>
+                    {% endfor %}
+
+                    {% if products|length == 0 %}
+                    <tr>
+                        <td colspan="6" class="text-center text-muted py-4">
+                            No products found
+                        </td>
+                    </tr>
+                    {% endif %}
+
+                </tbody>
+
+            </table>
+
+        </div>
+
+    </div>
+</div>
+
+{% endblock %}

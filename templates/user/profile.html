@@ -1,0 +1,12 @@
+{% extends 'user/base.html' %}
+{% block content %}
+
+<div class="card p-4 shadow">
+<h3>My Profile</h3>
+
+<p><strong>Name:</strong> {{ user.name }}</p>
+<p><strong>Email:</strong> {{ user.email }}</p>
+
+</div>
+
+{% endblock %}

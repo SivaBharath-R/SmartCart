@@ -1,0 +1,53 @@
+{% extends 'user/base.html' %}
+{% block content %}
+
+<div class="container mt-4">
+
+<h3 class="mb-4">My Orders</h3>
+
+{% for order in orders %}
+<div class="card mb-4 p-3 shadow-sm">
+
+<div class="d-flex justify-content-between">
+    <div>
+        <b>Order #{{ order.order_id }}</b><br>
+        <small>{{ order.created_at }}</small>
+    </div>
+    <span class="badge bg-success">{{ order.payment_status }}</span>
+</div>
+
+<hr>
+
+{% for item in order['items'] %}
+<div class="d-flex align-items-center mb-2">
+
+<img src="{{ url_for('static',
+filename='uploads/product_images/'+item.image) }}"
+width="70" class="me-3 rounded">
+
+<div>
+    <b>{{ item.name }}</b><br>
+    Qty: {{ item.quantity }}<br>
+    ₹{{ item.price }}
+</div>
+
+</div>
+{% endfor %}
+
+<div class="text-end">
+    <a href="/invoice/{{ order.order_id }}"
+       class="btn btn-outline-primary btn-sm">
+       Download Invoice
+    </a>
+    <a href="/dashboard"
+     class="btn btn-outline-primary btn-sm">
+     Continue Shopping
+    </a>
+</div>
+
+</div>
+{% endfor %}
+
+</div>
+
+{% endblock %}

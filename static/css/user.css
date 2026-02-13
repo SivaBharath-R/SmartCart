@@ -1,0 +1,731 @@
+/* ---------------- GLOBAL ---------------- */
+body{
+    background:#f1f3f6;
+    font-family:'Segoe UI',sans-serif;
+    margin:0;
+}
+
+a{ text-decoration:none; }
+
+/* ---------------- NAVBAR ---------------- */
+.main-navbar{
+    background:#131921;
+    color:white;
+    position:sticky;
+    top:0;
+    z-index:1000;
+}
+
+.logo{
+    font-size:24px;
+    font-weight:700;
+    color:#ff9900;
+}
+
+/* search bar */
+.search-box{
+    width:100%;
+    max-width:600px;
+}
+
+.search-box input{
+    border-radius:6px 0 0 6px;
+    border:none;
+    padding:10px;
+}
+
+.search-box button{
+    background:#febd69;
+    border:none;
+    border-radius:0 6px 6px 0;
+}
+
+/* cart badge */
+.cart-badge{
+    color:white;
+    
+}
+
+/* ---------------- HERO BANNER ---------------- */
+/* HERO BANNER */
+
+.hero{
+    position:relative;
+    height:250px;
+    border-radius:14px;
+    overflow:hidden;
+
+    background-image:url("../images/p1.jpg");
+    background-size:cover;      /* fills container */
+    background-position:center; /* keeps image centered */
+    background-repeat:no-repeat;
+
+    display:flex;
+    align-items:center;
+    padding-left:50px;
+    color:white;
+}
+
+
+/* dark overlay (important for text visibility) */
+.hero::before{
+    content:"";
+    position:absolute;
+    inset:0;
+    background:linear-gradient(to right,
+        rgba(0,0,0,0.65),
+        rgba(0,0,0,0.35),
+        rgba(0,0,0,0.05));
+}
+
+/* text content */
+.hero-content{
+    position:relative;
+    z-index:2;
+    max-width:500px;
+}
+
+.hero h3{
+    font-size:32px;
+    font-weight:700;
+}
+
+.hero p{
+    font-size:18px;
+    margin-top:10px;
+}
+
+
+/* ---------------- PRODUCT CARDS ---------------- */
+.product-card{
+    background:white;
+    border-radius:10px;
+    padding:12px;
+    transition:0.3s;
+    height:100%;
+    position:relative;
+}
+
+.product-card:hover{
+    transform:translateY(-8px);
+    box-shadow:0 10px 24px rgba(0,0,0,0.18);
+}
+
+.product-img{
+    height:220px;
+    object-fit:contain;
+}
+
+/* product name */
+.product-title{
+    font-size:15px;
+    font-weight:600;
+    height:45px;
+    overflow:hidden;
+}
+
+/* price */
+.price{
+    color:#388e3c;
+    font-size:20px;
+    font-weight:bold;
+}
+
+/* add button */
+.add-btn{
+    background:#ffd814;
+    border:none;
+    width:100%;
+    padding:8px;
+    border-radius:6px;
+    transition:0.2s;
+}
+
+.add-btn:hover{
+    background:#f7ca00;
+}
+
+/* view button */
+.view-btn{
+    border:1px solid #2563eb;
+    color:#2563eb;
+}
+
+.view-btn:hover{
+    background:#2563eb;
+    color:white;
+}
+
+/* ---------------- CART TABLE ---------------- */
+.cart-table img{
+    width:70px;
+    height:70px;
+    object-fit:cover;
+}
+
+.qty-btn{
+    width:30px;
+    height:30px;
+    border:none;
+    background:#2563eb;
+    color:white;
+    border-radius:4px;
+}
+
+.remove-btn{
+    background:#dc3545;
+    color:white;
+}
+
+/* ---------------- FOOTER ---------------- */
+.footer{
+    background:#172337;
+    color:white;
+    padding:40px 0;
+    margin-top:60px;
+}
+
+.footer a{
+    color:#ddd;
+}
+
+.footer a:hover{
+    color:white;
+}
+
+/* ---------------- MOBILE ---------------- */
+@media(max-width:768px){
+
+    .hero{
+        padding:20px;
+        text-align:center;
+    }
+
+    .product-img{
+        height:170px;
+    }
+
+    .logo{
+        font-size:20px;
+    }
+}
+
+/* ---------- ABOUT PAGE ---------- */
+
+.about-card{
+    background:white;
+    padding:30px;
+    border-radius:12px;
+    box-shadow:0 6px 20px rgba(0,0,0,0.1);
+}
+
+.feature-box{
+    padding:20px;
+    border-radius:10px;
+    background:#f8fafc;
+    transition:0.3s;
+}
+
+.feature-box:hover{
+    transform:translateY(-6px);
+    box-shadow:0 8px 18px rgba(0,0,0,0.15);
+}
+
+/* ---------- CONTACT PAGE ---------- */
+
+.contact-card{
+    background:white;
+    padding:30px;
+    border-radius:12px;
+    box-shadow:0 6px 20px rgba(0,0,0,0.1);
+}
+
+.contact-info{
+    background:#1f2937;
+    color:white;
+    padding:25px;
+    border-radius:12px;
+}
+
+.contact-info h5{
+    margin-bottom:15px;
+}
+
+/* PUBLIC PAGES */
+
+.about-box{
+    background:white;
+    padding:40px;
+    border-radius:12px;
+    box-shadow:0 6px 18px rgba(0,0,0,0.1);
+}
+
+.info-card{
+    background:#f8fafc;
+    padding:20px;
+    border-radius:10px;
+    transition:0.3s;
+}
+
+.info-card:hover{
+    transform:translateY(-5px);
+    box-shadow:0 8px 20px rgba(0,0,0,0.15);
+}
+
+.contact-box{
+    background:white;
+    padding:35px;
+    border-radius:12px;
+    box-shadow:0 6px 18px rgba(0,0,0,0.1);
+}
+/* category dropdown inside search */
+.category-select{
+    max-width:150px;
+    border-radius:6px 0 0 6px;
+    border:none;
+
+}
+
+.search-box input{
+    border-left:0;
+}
+
+.search-box button{
+    border-radius:0 6px 6px 0;
+}
+
+
+/* profile circle button */
+.profile-btn{
+    width:40px;
+    height:40px;
+    border-radius:50%;
+    border:none;
+    background:#2563eb;
+    color:white;
+    font-weight:600;
+    font-size:16px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+}
+
+.profile-btn:hover{
+    background:#1d4ed8;
+}
+
+/* cart badge positioning */
+.cart-badge{
+    position:absolute;
+    top:-6px;
+    right:-6px;
+    background:rgb(93, 194, 16);
+    color:white;
+    border-radius:50%;
+    font-size:11px;
+    padding:2px 6px;
+    width: 20px;
+}
+
+@media(max-width:768px){
+
+    .search-box{
+        margin-top:10px;
+    }
+
+    .profile-btn{
+        width:34px;
+        height:34px;
+        font-size:14px;
+    }
+}
+
+.main-navbar .row{
+    width:100%;
+    margin:0;
+}
+
+.main-navbar .logo{
+    margin-left:5px;
+}
+
+.main-navbar{
+    padding-right:0;
+}
+
+
+@media(max-width:768px){
+
+    .hero{
+        height:200px;
+        padding-left:20px;
+        background-position:right center;
+    }
+
+    .hero h3{
+        font-size:22px;
+    }
+
+    .hero p{
+        font-size:14px;
+    }
+}
+
+/* SEARCH BOX CONTAINER */
+.search-box{
+    display: flex;
+    width: 100%;
+}
+
+/* CATEGORY DROPDOWN */
+.category-select{
+    width: 130px;
+    border-radius: 8px 0 0 8px !important;  /* left rounded only */
+    border-right: none !important;          /* remove middle border */
+    font-size: 14px;
+}
+
+/* SEARCH INPUT */
+.search-box input{
+    border-radius: 0 !important;            /* no radius in middle */
+    border-left: none !important;
+    border-right: none !important;
+}
+
+/* SEARCH BUTTON */
+.search-box .btn{
+    border-radius: 0 8px 8px 0 !important;  /* right rounded only */
+}
+
+/* REMOVE FOCUS DOUBLE BORDER */
+.search-box input:focus,
+.category-select:focus{
+    box-shadow: none !important;
+    border-color: #ced4da !important;
+}
+
+
+/* ---------------- MOBILE RESPONSIVE ---------------- */
+
+@media (max-width: 992px){
+
+    /* Navbar */
+    .main-navbar .row{
+        row-gap:10px;
+    }
+
+    .logo{
+        font-size:20px;
+    }
+
+    /* search bar */
+    .search-box{
+        flex-direction:column;
+    }
+
+    .category-select{
+        width:100%;
+        border-radius:6px 6px 0 0 !important;
+    }
+
+    .search-box input{
+        border-radius:0;
+        margin-top:5px;
+    }
+
+    .search-box button{
+        border-radius:0 0 6px 6px;
+        margin-top:5px;
+        width:100%;
+    }
+
+    /* hero banner */
+    .hero{
+        height:180px;
+        padding-left:20px;
+    }
+
+    .hero h3{
+        font-size:20px;
+    }
+
+    .hero p{
+        font-size:14px;
+    }
+
+    /* product cards */
+    .card h5{
+        font-size:15px;
+    }
+
+    .card h4{
+        font-size:18px;
+    }
+
+    /* checkout page */
+    .checkout-container{
+        flex-direction:column;
+    }
+
+    /* cart items */
+    .cart-item{
+        flex-direction:column;
+        align-items:flex-start !important;
+    }
+
+    .cart-item img{
+        width:100%;
+        height:180px;
+        object-fit:cover;
+        margin-bottom:10px;
+    }
+
+    /* address card */
+    .address-card{
+        font-size:14px;
+    }
+
+    /* payment page */
+    #pay-btn{
+        width:100%;
+    }
+
+    /* order cards */
+    .order-card{
+        flex-direction:column;
+        align-items:flex-start !important;
+    }
+
+}
+
+/* small phones */
+@media (max-width:576px){
+
+    .main-navbar{
+        padding:10px;
+    }
+
+    .profile-btn{
+        width:32px;
+        height:32px;
+        font-size:13px;
+    }
+
+    .cart-badge{
+        font-size:10px;
+        padding:2px 5px;
+    }
+
+    .hero{
+        height:150px;
+    }
+
+}
+
+/* mobile cart + profile alignment */
+@media(max-width:768px){
+    .main-navbar .d-flex{
+        justify-content:space-between !important;
+        width:100%;
+    }
+}
+
+/* ---------------- CART PAGE ---------------- */
+
+.cart-table img{
+    width:70px;
+    height:70px;
+    object-fit:cover;
+    border-radius:8px;
+    margin-right:10px;
+}
+
+.qty-btn{
+    padding:4px 10px;
+    background:#2563eb;
+    color:white;
+    text-decoration:none;
+    border-radius:4px;
+}
+
+.qty-btn:hover{
+    background:#1d4ed8;
+}
+
+/* -------- MOBILE CART FIX -------- */
+
+@media(max-width:768px){
+
+    .cart-table thead{
+        display:none;
+    }
+
+    .cart-table, 
+    .cart-table tbody, 
+    .cart-table tr, 
+    .cart-table td{
+        display:block;
+        width:100%;
+    }
+
+    .cart-table tr{
+        background:white;
+        margin-bottom:15px;
+        border-radius:12px;
+        padding:12px;
+        box-shadow:0 3px 12px rgba(0,0,0,0.08);
+    }
+
+    .cart-table td{
+        border:none;
+        padding:6px 0;
+    }
+
+    /* product row */
+    .cart-table td:first-child{
+        display:flex;
+        align-items:center;
+        gap:10px;
+    }
+
+    /* remove button full width */
+    .cart-table td:last-child{
+        text-align:right;
+    }
+
+    .cart-table .btn-danger{
+        width:100%;
+        margin-top:8px;
+    }
+
+    /* checkout buttons */
+    .btn-success.float-end{
+        float:none !important;
+        width:100%;
+        margin-top:10px;
+    }
+}
+/* checkout cards */
+@media(max-width:768px){
+
+    .checkout-card{
+        margin-bottom:15px;
+    }
+
+    .address-card{
+        font-size:14px;
+    }
+}
+.profile-btn{
+    width:38px;
+    height:38px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-weight:bold;
+    border:2px solid #e5e7eb;
+}
+/* ================= MOBILE NAVBAR FIX ================= */
+
+@media (max-width:768px){
+
+    /* remove bootstrap row behaviour */
+    .main-navbar .row{
+        display:flex;
+        flex-wrap:wrap;
+    }
+
+    /* LOGO (top-left) */
+    .main-navbar .col-md-2{
+        order:1;
+        width:60%;
+    }
+
+    /* RIGHT ICONS (top-right) */
+    .main-navbar .col-md-4{
+        order:2;
+        width:40%;
+        justify-content:flex-end !important;
+    }
+
+    /* SEARCH AREA (second row) */
+    .main-navbar .col-md-6{
+        order:3;
+        width:100%;
+        margin-top:12px;
+    }
+
+    /* search box horizontal */
+    .search-box{
+        display:flex;
+        width:100%;
+    }
+
+    /* category dropdown */
+    .category-select{
+        width:85px !important;
+        border-radius:8px 0 0 8px !important;
+        font-size:13px;
+        padding:6px;
+    }
+
+    /* search input */
+    .search-box input{
+        flex:1;
+        font-size:14px;
+        padding:8px;
+    }
+
+    /* search button */
+    .search-box button{
+        border-radius:0 8px 8px 0 !important;
+        padding:8px 12px;
+    }
+
+    /* cart button */
+    .main-navbar .btn-warning{
+        padding:6px 10px;
+        font-size:16px;
+    }
+
+    /* profile button */
+    .profile-btn{
+        width:34px;
+        height:34px;
+        font-size:14px;
+    }
+
+    /* fix spacing */
+    .main-navbar{
+        padding-bottom:14px;
+    }
+}
+
+/* navbar base styling */
+.main-navbar{
+    background:#0f172a;
+}
+
+.logo{
+    color:#f59e0b;
+    font-size:24px;
+    font-weight:bold;
+    text-decoration:none;
+}
+
+/* prevents search input overflow */
+.search-box .form-control{
+    min-width:0;
+}
+.logo{
+    font-weight: 700;
+    letter-spacing: 1px;
+}
+
+/* Mobile navbar spacing */
+@media (max-width: 576px){
+    .main-navbar{
+        padding-top: 12px;
+        padding-bottom: 12px;
+    }
+}

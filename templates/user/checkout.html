@@ -1,0 +1,68 @@
+{% extends 'user/base.html' %}
+{% block content %}
+
+<div class="container mt-4">
+
+<h3 class="mb-4">Checkout</h3>
+
+<div class="row checkout-container">
+
+
+    <!-- LEFT: CART ITEMS -->
+    <div class="col-md-7">
+
+        {% for item in cart_items %}
+        <div class="card mb-3 p-3 shadow-sm d-flex flex-row align-items-center checkout-card">
+
+
+            <img src="{{ url_for('static',
+            filename='uploads/product_images/'+item.image) }}"
+            width="90" class="me-3 rounded">
+
+            <div class="flex-grow-1">
+                <h5>{{ item.name }}</h5>
+                <p class="mb-1">Qty: {{ item.quantity }}</p>
+                <b class="text-success">₹{{ item.price * item.quantity }}</b>
+            </div>
+
+        </div>
+        {% endfor %}
+
+    </div>
+
+    <!-- RIGHT: ADDRESS + TOTAL -->
+    <div class="col-md-5">
+
+        <div class="card p-3 mb-3 shadow-sm address-card">
+
+            <h5>Total Amount</h5>
+            <h3 class="text-success">₹{{ total }}</h3>
+        </div>
+
+        <a href="/add-address" class="btn btn-primary w-100 mb-3">
+            + Add New Address
+        </a>
+
+        {% for a in addresses %}
+        <div class="card p-3 mb-3 shadow-sm">
+
+            <b>{{ a.full_name }}</b><br>
+            {{ a.house }}, {{ a.area }}<br>
+            {{ a.city }} - {{ a.pincode }}<br>
+            {{ a.state }}<br>
+            Phone: {{ a.phone }}
+
+            <a href="/pay/{{ a.address_id }}"
+               class="btn btn-success mt-3 w-100">
+               Deliver Here
+            </a>
+
+        </div>
+        {% endfor %}
+
+    </div>
+
+</div>
+</div>
+
+{% endblock %}

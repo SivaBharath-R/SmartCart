@@ -1,0 +1,225 @@
+body{
+    background:#f4f6f9;
+    font-family:'Segoe UI',sans-serif;
+}
+
+/* ===== Layout ===== */
+.wrapper{
+    display:flex;
+}
+
+/* ===== Sidebar ===== */
+.sidebar{
+    width:250px;
+    height:100vh;
+    background:#111827;
+    color:white;
+    position:fixed;
+    top:0;
+    left:0;
+    transition:0.3s ease;
+    z-index:1000;
+}
+
+.sidebar.closed{
+    left:-250px;
+}
+
+.sidebar .brand{
+    padding:20px;
+    font-size:20px;
+    font-weight:bold;
+    text-align:center;
+    border-bottom:1px solid #2d3748;
+}
+
+.sidebar .menu{
+    list-style:none;
+    padding:0;
+}
+
+.sidebar .menu li a{
+    display:block;
+    color:#d1d5db;
+    padding:14px 20px;
+    text-decoration:none;
+}
+
+.sidebar .menu li a:hover{
+    background:#1f2937;
+    color:white;
+}
+
+/* ===== Main Content ===== */
+.main{
+    margin-left:250px;
+    width:100%;
+    transition:0.3s ease;
+}
+
+.main.expand{
+    margin-left:0;
+}
+
+/* ===== Topbar ===== */
+.topbar{
+    height:60px;
+    background:white;
+    border-bottom:1px solid #e5e7eb;
+    display:flex;
+    align-items:center;
+    padding:0 20px;
+}
+
+/* ===== Cards ===== */
+.stat-card{
+    border:none;
+    border-radius:14px;
+    text-align:center;
+    box-shadow:0 4px 12px rgba(0,0,0,0.08);
+    transition:0.25s;
+}
+
+.stat-card:hover{
+    transform:translateY(-4px);
+}
+
+.stat-card i{
+    font-size:30px;
+    color:#2563eb;
+}
+
+/* ===== Product Images ===== */
+.product-img{
+    width:60px;
+    height:60px;
+    object-fit:cover;
+    border-radius:8px;
+}
+
+/* ===== Forms ===== */
+.form-card{
+    max-width:600px;
+    margin:auto;
+    border-radius:14px;
+    box-shadow:0 4px 14px rgba(0,0,0,0.08);
+}
+
+/* ===== Auth Pages ===== */
+.auth-wrapper{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    height:100vh;
+}
+
+.auth-card{
+    width:400px;
+    background:white;
+    padding:30px;
+    border-radius:12px;
+    box-shadow:0 8px 20px rgba(0,0,0,0.12);
+}
+
+/* ===== Mobile ===== */
+@media(max-width:768px){
+
+    .main{
+        margin-left:0;
+    }
+
+    .sidebar{
+        left:-250px;
+    }
+    
+    .sidebar.open{
+        left:0;
+    }
+
+    .main{
+        margin-left:0 !important;
+    }
+
+    .sidebar.closed{
+        left:-250px;
+    }
+
+    .sidebar:not(.closed){
+        left:0;
+    }
+}
+/* overlay smooth fade */
+.overlay{
+    opacity:0;
+    transition:opacity 0.25s ease;
+}
+
+.overlay.show{
+    opacity:1;
+}
+/* overlay */
+.overlay{
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    background:rgba(0,0,0,0.35);
+    display:none;
+    z-index:950;
+}
+
+.overlay.show{
+    display:block;
+}
+
+/* keep toggle button clickable */
+#toggleBtn{
+    position:relative;
+    z-index:1200;
+}
+
+/* ===== Desktop (sidebar open by default) ===== */
+.sidebar{
+    left:0;
+}
+.main{
+    margin-left:250px;
+    transition:0.3s;
+}
+
+/* when closed by hamburger */
+.sidebar.closed{
+    left:-250px;
+}
+.main.expand{
+    margin-left:0;
+}
+
+/* ===== Mobile ===== */
+@media(max-width:768px){
+
+    /* mobile default CLOSED */
+    .sidebar{
+        left:-250px;
+    }
+
+    .main{
+        margin-left:0;
+    }
+
+    /* when opened */
+    .sidebar.open{
+        left:0;
+    }
+
+    /* keep hamburger clickable */
+    #toggleBtn{
+        position:relative;
+        z-index:1200;
+    }
+    #toggleBtn.hide{
+        opacity:0;
+        pointer-events:none;
+    }
+}

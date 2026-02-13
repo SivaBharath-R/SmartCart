@@ -1,0 +1,43 @@
+{% extends 'user/base.html' %}
+{% block content %}
+
+<div class="text-center mt-5">
+
+<div class="card p-5 shadow-sm">
+
+<h3>Complete Payment</h3>
+<h2 class="text-success mt-2">₹{{ total }}</h2>
+
+<button id="pay-btn" class="btn btn-success btn-lg mt-4">
+Pay Now
+</button>
+
+</div>
+</div>
+
+<script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+
+<script>
+var options = {
+    "key": "{{ razorpay_key }}",
+    "amount": "{{ amount }}",
+    "currency": "INR",
+    "name": "SmartCart",
+    "description": "Order Payment",
+    "order_id": "{{ razorpay_order_id }}",
+
+    "handler": function (response){
+        window.location.href =
+        "/payment-success/{{ order_db_id }}/" + response.razorpay_payment_id;
+    }
+};
+
+var rzp1 = new Razorpay(options);
+
+document.getElementById('pay-btn').onclick = function(e){
+    rzp1.open();
+    e.preventDefault();
+}
+</script>
+
+{% endblock %}

@@ -1,0 +1,88 @@
+<nav class="main-navbar py-2">
+    <div class="container-fluid px-4">
+
+        <div class="row align-items-center">
+
+            <!-- LOGO -->
+            <div class="col-md-2 col-6">
+                <a href="/dashboard" class="logo">🛍️SmartCart</a>
+            </div>
+
+            <!-- SEARCH + FILTER -->
+            <div class="col-md-6 col-12 mt-2 mt-md-0">
+
+                <form action="/dashboard" method="GET" class=" search-box">
+
+                    <!-- CATEGORY -->
+                    <select name="category" class="form-select category-select">
+                        <option value="">All</option>
+                        {% for c in categories %}
+                        <option value="{{ c.category }}" {% if selected_category==c.category %}selected{% endif %}>
+                            {{ c.category }}
+                        </option>
+                        {% endfor %}
+                    </select>
+
+                    <!-- SEARCH TEXT -->
+                    <input type="text" name="search" class="form-control" placeholder="Search for products..."
+                        value="{{ search }}">
+
+                    <!-- BUTTON -->
+                    <button class="btn btn-warning px-2">🔍</button>
+
+                </form>
+
+            </div>
+
+
+            <!-- RIGHT SIDE -->
+<div class="col-md-4 col-6 ms-auto d-flex justify-content-end align-items-center gap-2">
+
+    <!-- CART -->
+    <a href="/cart" class="btn btn-warning position-relative">
+        🛒
+        <span class="cart-badge">{{ cart_count }}</span>
+    </a>
+
+    <!-- PROFILE DROPDOWN -->
+    <div class="dropdown">
+
+        <button class="profile-btn dropdown-toggle" data-bs-toggle="dropdown">
+            {{ session.get('user_name','U')[0] | upper }}
+        </button>
+
+        <ul class="dropdown-menu dropdown-menu-end shadow">
+
+            <li class="px-3 py-2 text-muted small">
+                Signed in as <br>
+                <strong>{{ session.get('user_name','User') }}</strong>
+            </li>
+
+            <li><hr class="dropdown-divider"></li>
+
+            <li>
+                <a class="dropdown-item" href="/profile">My Profile</a>
+            </li>
+
+            <li>
+                <a class="dropdown-item" href="/cart">My Cart</a>
+            </li>
+            <li>
+                <a class="dropdown-item" href="/my-orders">My Orders</a>
+            </li>
+
+            <li><hr class="dropdown-divider"></li>
+
+            <li>
+                <a class="dropdown-item text-danger" href="/logout-user">Logout</a>
+            </li>
+
+        </ul>
+    </div>
+
+</div>
+
+
+        </div>
+    </div>
+</nav>
