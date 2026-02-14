@@ -2,26 +2,34 @@
 {% block content %}
     
 
-<div class="card p-4 shadow" style="width:380px;">
+<div class="auth-page">
 
-<h3 class="text-center mb-3">User Login</h3>
+    <div class="auth-card">
 
-<form method="POST">
+        <h3 class="text-center mb-4">User Login</h3>
 
-    <input type="email" name="email" class="form-control mb-3" placeholder="Email" required>
+        <form method="POST">
 
-    <input type="password" name="password" class="form-control mb-3" placeholder="Password" required>
+            <div class="mb-3">
+                <input type="email" name="email" class="form-control" placeholder="Email" required>
+            </div>
 
-    <button class="btn btn-primary w-100">Login</button>
+            <div class="mb-3">
+                <input type="password" name="password" class="form-control" placeholder="Password" required>
+            </div>
 
-</form>
+            <button class="btn btn-primary w-100">Login</button>
 
-<div class="text-center mt-3">
-    New User? <a href="/register">Register</a><br>
-    Forgot Password?<a href="/forgot-password">Click</a>
+        </form>
+
+        <div class="text-center mt-3">
+            New User? <a href="/register">Register</a><br>
+            Forgot Password? <a href="/forgot-password">Click</a>
+        </div>
+
+    </div>
+
 </div>
 
-
-</div>
 
 {% endblock %}

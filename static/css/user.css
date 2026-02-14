@@ -729,3 +729,78 @@ a{ text-decoration:none; }
         padding-bottom: 12px;
     }
 }
+/* FOOTER */
+
+.main-footer{
+    background:#17263c;
+    color:white;
+    padding:35px 0 25px 0;
+    margin-top:auto;
+    width:100%;
+}
+
+.main-footer h5{
+    font-size:22px;
+    margin-bottom:8px;
+}
+
+.main-footer p{
+    margin-bottom:8px;
+    color:#cbd5e1;
+}
+
+.footer-links a{
+    color:#facc15;
+    text-decoration:none;
+    margin:0 6px;
+    font-weight:500;
+}
+
+.footer-links a:hover{
+    text-decoration:underline;
+}
+
+.copyright{
+    font-size:14px;
+    margin-top:12px;
+    color:#94a3b8;
+}
+/* AUTH PAGE CENTERING */
+
+.auth-page{
+    min-height:70vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    padding:30px 15px;
+}
+
+/* login card */
+.auth-card{
+    background:white;
+    padding:28px;
+    border-radius:12px;
+    box-shadow:0 8px 25px rgba(0,0,0,0.15);
+    width:100%;
+    max-width:380px;
+}
+
+/* mobile */
+@media(max-width:576px){
+
+    .auth-card{
+        padding:22px;
+        border-radius:10px;
+    }
+
+    .auth-card h3{
+        font-size:22px;
+    }
+}
+.main-navbar .container-fluid{
+    max-width:1400px;
+    margin:auto;
+}
+.page-content{
+    flex:1;
+}
