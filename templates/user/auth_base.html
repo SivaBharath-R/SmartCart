@@ -16,7 +16,7 @@
 <body class="page-wrapper">
 
     <!-- NAVBAR -->
-    <nav class="guest-navbar">
+    <nav class="guest-navbar ">
         <div class="guest-nav-wrapper">
 
             <!-- LEFT : LOGO -->
@@ -38,7 +38,7 @@
     <main class="page-content d-flex justify-content-center align-items-center">
 
         <!-- FLASH -->
-        <div class="position-absolute top-0 mt-3" style="width:320px;">
+        <div class="flash-container">
             {% with messages = get_flashed_messages(with_categories=true) %}
             {% if messages %}
             {% for category, message in messages %}

@@ -532,3 +532,65 @@ html, body{
     text-decoration:underline;
 }
 
+/* FLASH MESSAGE POSITION */
+.flash-container{
+    position:fixed;
+    top:70px;              /* space below navbar */
+    left:50%;
+    transform:translateX(-50%);
+    width:320px;
+    z-index:2000;
+}
+@media(max-width:768px){
+    .flash-container{
+        width:90%;
+        top:65px;
+    }
+}
+/* ===== FORCE GUEST NAVBAR MOBILE FIX ===== */
+
+.guest-navbar{
+    background:#0b1a2b;
+    width:100%;
+}
+
+.guest-nav-wrapper{
+    display:flex !important;
+    align-items:center !important;
+    justify-content:space-between !important;
+    padding:10px 14px;
+}
+
+/* logo */
+.guest-logo{
+    color:#ffb300 !important;
+    font-weight:700;
+    font-size:20px;
+    display:flex;
+    align-items:center;
+    gap:6px;
+}
+
+/* right buttons container */
+.guest-actions{
+    display:flex !important;
+    align-items:center;
+    gap:8px;
+}
+
+/* buttons */
+.login-btn,
+.register-btn{
+    background:#ffc107;
+    color:#000 !important;
+    padding:6px 12px;
+    border-radius:8px;
+    font-size:14px;
+    font-weight:600;
+    display:inline-block;
+}
+
+/* remove bootstrap link styling */
+.guest-navbar a{
+    text-decoration:none !important;
+}
