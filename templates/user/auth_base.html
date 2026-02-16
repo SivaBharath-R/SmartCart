@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <title>SmartCart</title>
@@ -12,37 +13,42 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='css/user.css') }}">
 </head>
 
-<body class="bg-light d-flex flex-column min-vh-100">
+<body class="page-wrapper">
 
     <!-- NAVBAR -->
-    <nav class="main-navbar py-2">
-        <div class="container-fluid px-4 d-flex justify-content-between align-items-center">
+    <nav class="guest-navbar">
+        <div class="guest-nav-wrapper">
 
-            <a class="logo" href="/">🛍️SmartCart</a>
+            <!-- LEFT : LOGO -->
+            <a class="guest-logo" href="/">
+                🛍️ <span>SmartCart</span>
+            </a>
 
-        <div class="d-flex gap-1">
-            <a href="/user-login" class="btn btn-warning">Login</a>
-            <a href="/register" class="btn btn-warning">Register</a>
-        </div>
+            <!-- RIGHT : BUTTONS -->
+            <div class="guest-actions">
+                <a href="/user-login" class="login-btn">Login</a>
+                <a href="/register" class="register-btn">Register</a>
+            </div>
 
         </div>
     </nav>
 
+
     <!-- CENTER CONTENT -->
-    <main class="flex-fill d-flex justify-content-center align-items-center">
+    <main class="page-content d-flex justify-content-center align-items-center">
 
         <!-- FLASH -->
         <div class="position-absolute top-0 mt-3" style="width:320px;">
             {% with messages = get_flashed_messages(with_categories=true) %}
             {% if messages %}
-                {% for category, message in messages %}
-                    {% if category.startswith('user_') %}
-                    <div class="alert alert-{{ category.replace('user_','') }} alert-dismissible fade show">
-                        {{ message }}
-                        <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
-                    </div>
-                    {% endif %}
-                {% endfor %}
+            {% for category, message in messages %}
+            {% if category.startswith('user_') %}
+            <div class="alert alert-{{ category.replace('user_','') }} alert-dismissible fade show">
+                {{ message }}
+                <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+            </div>
+            {% endif %}
+            {% endfor %}
             {% endif %}
             {% endwith %}
         </div>
@@ -66,6 +72,7 @@
         </div>
     </footer>
 
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
+
 </html>

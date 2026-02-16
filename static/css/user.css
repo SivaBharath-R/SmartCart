@@ -1,5 +1,10 @@
 /* ---------------- GLOBAL ---------------- */
 
+html, body{
+    margin:0;
+    padding:0;
+}
+
 * {
     box-sizing: border-box;
 }
@@ -375,3 +380,155 @@ html, body{
     margin-top:25px;
     padding :10px
 }
+
+/* ---------- GUEST NAVBAR ---------- */
+
+.guest-navbar{
+    background:#0b1a2b;
+    padding:10px 16px;
+    position:sticky;
+    top:0;
+    z-index:1000;
+}
+
+.guest-nav-wrapper{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    max-width:1200px;
+    margin:auto;
+}
+
+/* logo */
+.guest-logo{
+    color:#ffb300;
+    font-size:22px;
+    font-weight:700;
+    text-decoration:none;
+    white-space:nowrap;
+}
+
+/* button container */
+.guest-actions{
+    display:flex;
+    gap:10px;
+}
+
+/* buttons */
+.login-btn,
+.register-btn{
+    background:#ffc107;
+    color:black;
+    padding:7px 14px;
+    border-radius:8px;
+    font-weight:600;
+    font-size:14px;
+    text-decoration:none;
+    transition:0.2s;
+}
+
+.login-btn:hover,
+.register-btn:hover{
+    background:#ffb300;
+    color:black;
+}
+@media (max-width:480px){
+
+    .guest-logo{
+        font-size:18px;
+    }
+
+    .guest-actions{
+        gap:6px;
+    }
+
+    .login-btn,
+    .register-btn{
+        padding:6px 10px;
+        font-size:13px;
+    }
+}
+
+/* ---------- AUTH PAGE ---------- */
+
+.auth-container{
+    min-height:70vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+}
+
+/* card */
+.auth-card{
+    background:white;
+    width:100%;
+    max-width:380px;
+    padding:28px 26px;
+    border-radius:14px;
+    box-shadow:0 10px 30px rgba(0,0,0,0.15);
+    text-align:center;
+}
+
+/* title */
+.auth-title{
+    font-weight:700;
+    margin-bottom:18px;
+    color:#111827;
+}
+
+/* input group */
+.form-group{
+    margin-bottom:14px;
+}
+
+/* inputs */
+.auth-card input{
+    width:100%;
+    padding:11px 12px;
+    border-radius:8px;
+    border:1px solid #d1d5db;
+    outline:none;
+    transition:0.2s;
+    font-size:14px;
+}
+
+/* focus effect */
+.auth-card input:focus{
+    border-color:#2563eb;
+    box-shadow:0 0 0 2px rgba(37,99,235,0.15);
+}
+
+/* login button */
+.auth-btn{
+    width:100%;
+    padding:11px;
+    border:none;
+    border-radius:8px;
+    background:#2563eb;
+    color:white;
+    font-weight:600;
+    font-size:15px;
+    margin-top:6px;
+    transition:0.25s;
+}
+
+.auth-btn:hover{
+    background:#1d4ed8;
+}
+
+/* links */
+.auth-links{
+    margin-top:14px;
+    font-size:14px;
+}
+
+.auth-links a{
+    color:#2563eb;
+    text-decoration:none;
+    font-weight:500;
+}
+
+.auth-links a:hover{
+    text-decoration:underline;
+}
+
