@@ -1,20 +1,37 @@
-<nav class="main-navbar py-2">
-    <div class="container-fluid px-4">
+<!DOCTYPE html>
+<html lang="en">
 
-        <div class="row align-items-center">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
 
-            <!-- LOGO -->
-            <div class="col-md-2 col-6">
-                <a href="/dashboard" class="logo">🛍️SmartCart</a>
+    <!-- User CSS -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/user.css') }}">
+</head>
+
+<body>
+    <nav class="main-navbar">
+
+        <div class="nav-wrapper">
+
+            <!-- LEFT : LOGO -->
+            <div class="nav-left">
+                <a href="/dashboard" class="logo">
+                    🛍️ <span class="logo-text">SmartCart</span>
+                </a>
             </div>
 
-            <!-- SEARCH + FILTER -->
-            <div class="col-md-6 col-12 mt-2 mt-md-0">
 
-                <form action="/dashboard" method="GET" class=" search-box">
+            <!-- CENTER : CATEGORY + SEARCH -->
+            <div class="nav-center">
 
-                    <!-- CATEGORY -->
-                    <select name="category" class="form-select category-select">
+                <form action="/dashboard" method="GET" class="search-form">
+
+                    <!-- CATEGORY FROM DB -->
+                    <select name="category" class="category-select">
                         <option value="">All</option>
                         {% for c in categories %}
                         <option value="{{ c.category }}" {% if selected_category==c.category %}selected{% endif %}>
@@ -23,66 +40,61 @@
                         {% endfor %}
                     </select>
 
-                    <!-- SEARCH TEXT -->
-                    <input type="text" name="search" class="form-control" placeholder="Search for products..."
+                    <!-- SEARCH -->
+                    <input type="text" name="search" class="search-input" placeholder="Search for products..."
                         value="{{ search }}">
 
                     <!-- BUTTON -->
-                    <button class="btn btn-warning px-2">🔍</button>
+                    <button type="submit" class="search-btn">🔍</button>
 
                 </form>
 
             </div>
 
 
-            <!-- RIGHT SIDE -->
-<div class="col-md-4 col-6 ms-auto d-flex justify-content-end align-items-center gap-2">
+            <!-- RIGHT : CART + PROFILE -->
+            <div class="nav-right">
 
-    <!-- CART -->
-    <a href="/cart" class="btn btn-warning position-relative">
-        🛒
-        <span class="cart-badge">{{ cart_count }}</span>
-    </a>
+                <!-- CART -->
+                <a href="/cart" class="cart-btn position-relative">
+                    🛒
+                    <span class="cart-badge">{{ cart_count }}</span>
+                </a>
 
-    <!-- PROFILE DROPDOWN -->
-    <div class="dropdown">
+                <!-- PROFILE -->
+                <div class="dropdown">
+                    <button class="profile-btn dropdown-toggle" data-bs-toggle="dropdown">
+                        {{ session.get('user_name','U')[0] | upper }}
+                    </button>
 
-        <button class="profile-btn dropdown-toggle" data-bs-toggle="dropdown">
-            {{ session.get('user_name','U')[0] | upper }}
-        </button>
+                    <ul class="dropdown-menu dropdown-menu-end shadow">
 
-        <ul class="dropdown-menu dropdown-menu-end shadow">
+                        <li class="px-3 py-2 text-muted small">
+                            Signed in as <br>
+                            <strong>{{ session.get('user_name','User') }}</strong>
+                        </li>
 
-            <li class="px-3 py-2 text-muted small">
-                Signed in as <br>
-                <strong>{{ session.get('user_name','User') }}</strong>
-            </li>
+                        <li>
+                            <hr class="dropdown-divider">
+                        </li>
+                        <li><a class="dropdown-item" href="/profile">My Profile</a></li>
+                        <li><a class="dropdown-item" href="/cart">My Cart</a></li>
+                        <li><a class="dropdown-item" href="/my-orders">My Orders</a></li>
+                        <li>
+                            <hr class="dropdown-divider">
+                        </li>
+                        <li><a class="dropdown-item text-danger" href="/logout-user">Logout</a></li>
 
-            <li><hr class="dropdown-divider"></li>
+                    </ul>
+                </div>
 
-            <li>
-                <a class="dropdown-item" href="/profile">My Profile</a>
-            </li>
-
-            <li>
-                <a class="dropdown-item" href="/cart">My Cart</a>
-            </li>
-            <li>
-                <a class="dropdown-item" href="/my-orders">My Orders</a>
-            </li>
-
-            <li><hr class="dropdown-divider"></li>
-
-            <li>
-                <a class="dropdown-item text-danger" href="/logout-user">Logout</a>
-            </li>
-
-        </ul>
-    </div>
-
-</div>
-
+            </div>
 
         </div>
-    </div>
-</nav>
+
+    </nav>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+</body>
+
+</html>
